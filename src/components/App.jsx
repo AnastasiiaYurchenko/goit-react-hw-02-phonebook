@@ -11,10 +11,18 @@ export class App extends Component {
     number: '',
   };
 
+  addContact = newContact => {
+    console.log(newContact);
+    // console.log(prevState);
+    // this.setState(prevState => ({
+    //   contacts: [...prevState, newContact],
+    // }));
+  };
+
   render() {
     return (
       <Layout>
-        <ContactsForm />
+        <ContactsForm onSave={this.addContact} />
         <ContactsList />
         <GlobalStyle />
       </Layout>
