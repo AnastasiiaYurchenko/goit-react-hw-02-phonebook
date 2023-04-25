@@ -16,9 +16,7 @@ const ContactsSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required field'),
-  number: Yup.string()
-    .phone('UA', '${path} must be a valid phone number for region UA')
-    .required('Required field'),
+  number: Yup.string().phone('UA').required('Required field'),
 });
 
 export const ContactsForm = ({ onSave }) => (
