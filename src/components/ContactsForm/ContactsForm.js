@@ -11,7 +11,7 @@ import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
 // import * as yup from 'yup';
 // const yup = require("yup");
-import 'yup-phone';
+// import 'yup-phone';
 
 const phoneRegExp =
   /^(\+?3?8)?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}$/;
@@ -28,7 +28,6 @@ const ContactsSchema = Yup.object().shape({
 
 export const ContactsForm = ({ onSave }) => (
   <FormWrapper>
-    <h1>Phonebook</h1>
     <Formik
       initialValues={{
         name: '',
