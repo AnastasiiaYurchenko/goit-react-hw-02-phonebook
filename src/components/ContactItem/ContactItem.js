@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Item } from './ContactItem.styled';
+import { Button, Item } from './ContactItem.styled';
 
 export class ContactItem extends Component {
   state = {
@@ -12,7 +12,15 @@ export class ContactItem extends Component {
     // const { name, number } = this.props;
     return (
       <Item>
-        {this.props.name} : {this.props.number}
+        <p>
+          {this.props.name} : {this.props.number}
+        </p>
+        <Button
+          type="button"
+          onClick={() => this.props.onDelete(this.props.id)}
+        >
+          Delete
+        </Button>
       </Item>
     );
   }

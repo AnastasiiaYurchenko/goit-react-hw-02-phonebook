@@ -31,8 +31,13 @@ export const Field = styled(FieldInput)`
 `;
 
 export const Button = styled.button`
+  border-radius: 4px;
   padding: 5px 8px;
   margin-bottom: 8px;
+
+  :active {
+    background-color: lightblue;
+  }
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`

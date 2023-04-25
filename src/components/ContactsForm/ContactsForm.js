@@ -16,6 +16,9 @@ import { nanoid } from 'nanoid';
 const phoneRegExp =
   /^(\+?3?8)?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}$/;
 
+// const phoneRegExp =
+//   '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}';
+
 const ContactsSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -24,6 +27,9 @@ const ContactsSchema = Yup.object().shape({
   number: Yup.string()
     .matches(phoneRegExp, 'Invalid phone number')
     .required('Required field'),
+  // number: yup.string()
+  // .phone("UA")
+  // .required(),
 });
 
 export const ContactsForm = ({ onSave }) => (

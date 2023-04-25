@@ -1,6 +1,6 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
-export const ContactsList = ({ contacts }) => {
+export const ContactsList = ({ contacts, onDelete }) => {
   return (
     <ul>
       {contacts.map(contact => {
@@ -8,11 +8,14 @@ export const ContactsList = ({ contacts }) => {
           // <Item key={contact.id}>
           //   {contact.name} : {contact.number}
           // </Item>
-          <ContactItem
-            key={contact.id}
-            name={contact.name}
-            number={contact.number}
-          />
+          <li key={contact.id}>
+            <ContactItem
+              name={contact.name}
+              number={contact.number}
+              id={contact.id}
+              onDelete={onDelete}
+            />
+          </li>
         );
       })}
     </ul>
