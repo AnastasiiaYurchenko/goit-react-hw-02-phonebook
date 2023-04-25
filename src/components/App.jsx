@@ -17,14 +17,25 @@ export class App extends Component {
   };
 
   addContact = newContact => {
-    console.log(newContact);
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
-    }));
+    // console.log(newContact.name);
+
+    const { contacts } = this.state;
+    const totalNames = contacts.map(contact => contact.name);
+
+    if (!totalNames.includes(newContact.name)) {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, newContact],
+      }));
+    } else {
+      window.alert(`${newContact.name} is allready in contacts`);
+    }
   };
 
   deleteContact = contactId => {
-    console.log(contactId);
+    // console.log(contactId);
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   changeFilter = e => {
@@ -55,7 +66,4 @@ export class App extends Component {
       </Layout>
     );
   }
-
-  // return
-  //   <div>React homework template</div>
 }

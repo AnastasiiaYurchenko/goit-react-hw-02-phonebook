@@ -9,15 +9,7 @@ import {
 import { FormWrapper } from './ContactsForm.styled';
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
-// import * as yup from 'yup';
-// const yup = require("yup");
-// import 'yup-phone';
-
-const phoneRegExp =
-  /^(\+?3?8)?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}$/;
-
-// const phoneRegExp =
-//   '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}';
+import 'yup-phone-lite';
 
 const ContactsSchema = Yup.object().shape({
   name: Yup.string()
@@ -25,11 +17,8 @@ const ContactsSchema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required('Required field'),
   number: Yup.string()
-    .matches(phoneRegExp, 'Invalid phone number')
+    .phone('UA', '${path} must be a valid phone number for region UA')
     .required('Required field'),
-  // number: yup.string()
-  // .phone("UA")
-  // .required(),
 });
 
 export const ContactsForm = ({ onSave }) => (
@@ -41,8 +30,7 @@ export const ContactsForm = ({ onSave }) => (
       }}
       validationSchema={ContactsSchema}
       onSubmit={(values, actions) => {
-        console.log(values);
-        console.log(values.number);
+        // console.log(values);
         onSave({
           ...values,
           id: nanoid(),
